@@ -20,6 +20,7 @@
 		848D44611D5B271000DDA9D3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848D44601D5B271000DDA9D3 /* ViewController.swift */; };
 		848D44641D5B271000DDA9D3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 848D44621D5B271000DDA9D3 /* Main.storyboard */; };
 		848D44691D5B271000DDA9D3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 848D44671D5B271000DDA9D3 /* LaunchScreen.storyboard */; };
+		922F2B9B1D6E6E14007BADD9 /* AcountsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 922F2B9A1D6E6E14007BADD9 /* AcountsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,6 +42,7 @@
 		848D44631D5B271000DDA9D3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		848D44681D5B271000DDA9D3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		848D446A1D5B271000DDA9D3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		922F2B9A1D6E6E14007BADD9 /* AcountsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AcountsViewController.swift; sourceTree = "<group>"; };
 		995388F41423D2C9E52FF284 /* Pods_TwitterTEst.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TwitterTEst.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -108,6 +110,7 @@
 			children = (
 				2A2508BE1D65D77800AE2C5A /* Model */,
 				848D445E1D5B271000DDA9D3 /* AppDelegate.swift */,
+				922F2B9A1D6E6E14007BADD9 /* AcountsViewController.swift */,
 				2A2508BC1D65C92300AE2C5A /* WebViewController.swift */,
 				848D44601D5B271000DDA9D3 /* ViewController.swift */,
 				848D44621D5B271000DDA9D3 /* Main.storyboard */,
@@ -221,6 +224,7 @@
 				2A2508C01D65D78700AE2C5A /* VideoLink.swift in Sources */,
 				2A2508BD1D65C92300AE2C5A /* WebViewController.swift in Sources */,
 				2A2508BB1D65C7F400AE2C5A /* Constants.swift in Sources */,
+				922F2B9B1D6E6E14007BADD9 /* AcountsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

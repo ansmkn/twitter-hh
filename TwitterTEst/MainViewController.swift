@@ -8,6 +8,7 @@
 
 import UIKit
 import JASON
+import Social
 import SwifteriOS
 
 class MainViewController: UIViewController {
@@ -51,70 +52,44 @@ class MainViewController: UIViewController {
                 return
             }
             if let text = status?["text"]?.string {
-                self.swifter?.postStatusUpdate(text, inReplyToStatusID: nil, lat: nil, long: nil, placeID: nil, displayCoordinates: nil, trimUser: nil, media_ids: [], success: { (astatus) in
-                    guard astatus != nil else {
-                        
-                        self.showError("Can not post a tweet")
-                        return
-                    }
-                    self.showMessage("Operation was successfully completed")
-                    self.activityIndicatorView.stopAnimating()
-                    
-                    }, failure: failureHandler)
+                
+                self.activityIndicatorView.stopAnimating()
+                self.update(text)
+//                
+//                self.swifter?.postStatusUpdate(text, inReplyToStatusID: nil, lat: nil, long: nil, placeID: nil, displayCoordinates: nil, trimUser: nil, media_ids: [], success: { (astatus) in
+//                    guard astatus != nil else {
+//
+//                        return
+//                    }
+//                    
+//                    }, failure: failureHandler)
                 print(text)
             }
         }, failure: failureHandler)
-//        Twitter.sharedInstance().logInWithMethods(TWTRLoginMethod.WebBased) { session, error in
-//            guard session != nil && error == nil else {
-//                print("error: \(error!.localizedDescription)");
-//                return
-//            }
-//            
-//            print("signed in as \(session!.userName)");
-//            self.client = TWTRAPIClient(userID: session!.userID)
-//            let url = "https://api.twitter.com/1.1/statuses/show.json"
-//            let params = [ "id" : tweetId]
-//            let request = self.client?.URLRequestWithMethod("GET", URL: url, parameters: params, error: nil)
-//            self.client?.sendTwitterRequest(request!) {
-//                respons, data, error in
-//                
-//                self.activityIndicatorView.stopAnimating()
-//                guard error == nil else {
-//                    print ("show request error:\(error)")
-//                    return
-//                }
-//                let json = JSON(data)
-//                print(json)
-//                let url = json["entities"]["urls"][0]["url"].nsURL
-//                
-//                let text = json["text"]
-//                guard let tweetText = text.string else {
-//                    self.showError("can't parse tweet")
-//                    return
-//                }
-//                self.composeTweet(tweetText, url: nil)
-//                
-//            }
-//        }
+        
         
     }
     
-    func composeTweet(text: String, url: NSURL?) {
-//        let composer = TWTRComposer()
-//        
-//        composer.setText(text)
-//        composer.setURL(url)
-//        
-//        // Called from a UIViewController
-//        composer.showFromViewController(self) { result in
-//            if (result == TWTRComposerResult.Cancelled) {
-//                print("Tweet composition cancelled")
-//            }
-//            else {
-//                print("Sending tweet!")
-//            }
-//        }
+    func update(status: String) {
+        if SLComposeViewController.isAvailableForServiceType(SLServiceTypeTwitter) {
+            let composer = SLComposeViewController(forServiceType: SLServiceTypeTwitter)
+            composer.setInitialText(status)
+            composer.completionHandler = {
+                result in
+                if case SLComposeViewControllerResult.Done = result {
+                    
+                    self.showMessage("Operation was successfully completed")
+                    self.activityIndicatorView.stopAnimating()
+                } else {
+                    self.showError("Updating was canceled")
+                }
+            };
+            self.presentViewController(composer, animated: true, completion: {
+                //
+            })
+        }
     }
+    
     
     func matchesForRegexInText(regex: String!, text: String!) -> [String] {
         
